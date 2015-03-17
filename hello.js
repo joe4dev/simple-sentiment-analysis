@@ -70,5 +70,27 @@ app.get('/api_limits', function (req, res) {
   });
 });
 
+app.get('/watchTwitter', function (req, res) {
+    var stream;
+    var testTweetCount = 0;
+    var phrase = 'Obama';
+    client.stream('statuses/filter', {track: phrase}, function(stream) {
+      res.send("Monitoring Twitter for \'" + phrase
+        + "\'...  Logging Twitter traffic.");
+
+      stream.on('data', function (data) {
+          testTweetCount++;
+          // Update the console every 50 analyzed tweets
+          if (testTweetCount % 50 === 0) {
+              console.log("Tweet #" + testTweetCount + ":  " + data.text);
+          }
+      });
+
+      stream.on('error', function(error) {
+        throw error;
+      });
+    });
+});
+
 app.listen(port);
 console.log("Server listening on port " + port);
