@@ -8,6 +8,16 @@ and runs those tweets through a sentiment-analysis module to produce a sentiment
 
 You can play with an instance of the application running at [http://simplesentimentanalysisforpulse.mybluemix.net/](http://simplesentimentanalysisforpulse.mybluemix.net)
 
+
+## Configure
+
+Provide the Twitter credentials via the following environment variables:
+
+* TWITTER_CONSUMER_KEY
+* TWITTER_CONSUMER_SECRET
+* TWITTER_ACCESS_TOKEN_KEY
+* TWITTER_ACCESS_TOKEN_SECRET
+
 ## Run
 ```
 npm install
